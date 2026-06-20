@@ -1,0 +1,10 @@
+import cv2
+i = cv2.imread("pic04.png")
+k = cv2.cvtColor(i, cv2.COLOR_BGR2GRAY)
+_, z = cv2.threshold(k, 20, 255, cv2.THRESH_BINARY)  
+contours, _ = cv2.findContours(z, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+cv2.drawContours(i, contours, -1, (0, 255, 0), 2)  
+p=cv2.Canny(i,50,50)
+cv2.imshow("", p)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
